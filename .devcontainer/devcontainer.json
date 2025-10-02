@@ -1,0 +1,5 @@
+{
+  "name": "Polyglot Cloud POCs",
+  "image": "ghcr.io/ronaldesp/devcontainer-polyglot:latest",
+  "remoteUser": "vscode"
+}
