@@ -2,6 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Start and Debug Azure Functions",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "func",
+      "args": ["start", "--verbose"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "preLaunchTask": "build (functions)",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "stopAtEntry": false
+    },
+    {
       "name": "Attach to .NET Functions",
       "type": "coreclr",
       "request": "attach",

@@ -266,3 +266,4 @@ __pycache__/
 # Azurite (Azure Storage Emulator)
 __azurite_db_*
 __blobstorage__/
+__queue_storage__/

@@ -1,0 +1,7 @@
+{
+    "productId": 1234,
+    "quantity": 2,
+    "customerName": "John Doe",
+    "customerEmail": "john.doe@example.com",
+    "purchasePrice": 19.99
+}

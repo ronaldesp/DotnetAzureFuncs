@@ -16,7 +16,7 @@ public class NewPurchaseWebhook
     }
 
     [Function(nameof(NewPurchaseWebhook))]
-    public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchase")] HttpRequestData req)
+    public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = "purchase")] HttpRequestData req)
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -32,7 +32,7 @@ public class NewPurchaseWebhook
     record NewOrderWebhook(string productId, int quantity, string customerName, string customerEmail, decimal purchasePrice);
     
     [Function(nameof(GetPurchase))]
-    public async Task<HttpResponseData> GetPurchase([HttpTrigger(AuthorizationLevel.Function, "get", Route ="purchase")] HttpRequestData req)
+    public async Task<HttpResponseData> GetPurchase([HttpTrigger(AuthorizationLevel.Function, "post", Route ="purchase")] HttpRequestData req)
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -41,9 +41,14 @@ public class NewPurchaseWebhook
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
-        var userAgent = req.Headers.GetValues("User-Agent").FirstOrDefault() ?? "Unknown"; 
-        var name = req.Query.Get("name") ?? "Anonymous";
-        await response.WriteStringAsync($"{order.customerName} purchased product {order.productId}!");
+        if (order != null)
+        {
+            await response.WriteStringAsync($"{order.customerName} purchased product {order.productId}!");
+        }
+        else
+        {
+            await response.WriteStringAsync("No purchase data received");
+        }
 
         return response;
     }

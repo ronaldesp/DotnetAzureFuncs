@@ -1,4 +1,6 @@
-POST curl http://localhost:7071/api/purchase
+### POST Request to create a new purchase
+POST http://localhost:7071/api/purchase
+Content-Type: application/json
 
 {
     "productId": "1234",
@@ -7,3 +9,13 @@ POST curl http://localhost:7071/api/purchase
     "customerEmail": "john.doe@example.com",
     "purchasePrice": 100.00
 }
+
+###
+
+### GET Request to retrieve purchase information
+GET http://localhost:7071/api/purchase?productId=1234&customerName=John Doe
+
+###
+
+### Simple GET Request
+GET http://localhost:7071/api/purchase

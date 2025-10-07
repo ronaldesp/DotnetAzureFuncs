@@ -3,5 +3,9 @@
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "publish (functions)"
+    "azureFunctions.preDeployTask": "publish (functions)",
+    "dotnet.server.useOmnisharp": false,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.useModernNet": true,
+    "csharp.semanticHighlighting.enabled": true
 }

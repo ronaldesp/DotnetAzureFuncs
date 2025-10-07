@@ -56,14 +56,35 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "type": "func",
+      "label": "func-host-start",
+      "type": "shell",
       "dependsOn": "build (functions)",
       "options": {
-        "cwd": "${workspaceFolder}/bin/Debug/net8.0"
+        "cwd": "${workspaceFolder}"
       },
-      "command": "host start",
+      "command": "func",
+      "args": ["start"],
       "isBackground": true,
-      "problemMatcher": "$func-dotnet-watch"
+      "group": "build",
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Determining projects to restore.*",
+          "endsPattern": "^.*Job host started.*"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
     }
   ]
 }
